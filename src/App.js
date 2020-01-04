@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -15,8 +15,11 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={ this.renderHome } />
         <Route exact path="/customers" component={ this.renderCustomerContainer } />
-        <Route exact path="/customers/:id" component={ this.renderCustomerListContainer } />
-        <Route exact path="/customers/:new" component={ this.renderCustomerNewContainer } />
+
+        <Switch>
+          <Route  path="/customers/new" component={ this.renderCustomerNewContainer } />
+          <Route  path="/customers/:id" component={ this.renderCustomerListContainer } />
+        </Switch>
       </div>
     </Router>
   );
