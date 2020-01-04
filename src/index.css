@@ -39,23 +39,23 @@ body {
   border-style: solid;
 }
 
-.customers-list .customers-list-item {
+.customers-list .customer-list-item {
   width: 100%;
   background: #FFF;
   transition: 500ms;
   height: 40px;
 }
 
-.customers-list .customers-list-item:nth-child(even) {
+.customers-list .customer-list-item:nth-child(even) {
   background: #EEE;
 }
 
-.customers-list .customers-list-item:hover {
+.customers-list .customer-list-item:hover {
   background: #84adad3a;
   border: 1px solid;
 }
 
-.customers-list-item .field {
+.customer-list-item .field {
   width: 160px;
   margin: 1px;
   padding: 4px;
@@ -64,26 +64,26 @@ body {
   line-height: 40px;
 }
 
-.customers-list-item .field:first-child {
+.customer-list-item .field:first-child {
   width: 70%;
   margin: 0;
   box-sizing: border-box;
 }
 
-.customers-list-item .field {
+.customer-list-item .field {
   width: 15%;
   margin: 0;
   box-sizing: border-box;
 }
 
 
-.customers-list-item .field:first-child>a {
+.customer-list-item .field:first-child>a {
   color: #222;
   text-decoration: none;
   font-weight: bolder;
 }
 
-.customers-list-item .field a {
+.customer-list-item .field a {
   color: #666;
   text-decoration: none;
 
