@@ -1,0 +1,36 @@
+{
+  "customers": [
+    {
+    "id": "10000000",
+    "name": "Juanito Perez",
+    "age": 21
+    },
+    {
+    "id": "15000000",
+    "name": "Otro",
+    "age": 25
+    },
+    {
+    "id": "30000000",
+    "name": "Aueliano Buendia",
+    "age": 30
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
