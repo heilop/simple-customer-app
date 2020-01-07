@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppFrame from './../components/AppFrame';
+import { getCustomerById } from '../selectors/customers';
 
 class CustomerContainer extends Component {
   render() {
@@ -9,7 +10,8 @@ class CustomerContainer extends Component {
       <div>
         <AppFrame
           header = { `Customer ${this.props.id}` }
-          body = { <p>Customer Data</p> }
+          body = { <p>Customer Data "{ this.props.customer.name }"</p> }
+
         >
 
         </AppFrame>
@@ -20,6 +22,11 @@ class CustomerContainer extends Component {
 
 CustomerContainer.propTypes = {
   id: PropTypes.string.isRequired,
+  customer: PropTypes.object.isRequired,
 };
 
-export default connect(null, null)(CustomerContainer);
+const mapStateToProps = (state, props) => ({
+  customer: getCustomerById(state, props)
+});
+
+export default connect(mapStateToProps, null)(CustomerContainer);
