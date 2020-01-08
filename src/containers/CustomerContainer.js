@@ -9,11 +9,15 @@ import { getCustomerById } from '../selectors/customers';
 
 class CustomerContainer extends Component {
 
+  handleSubmit = values => {
+    console.log(JSON.stringify(values));
+  };
+
   renderBody = () => (
     <Route path = "/customers/:id/edit"  children = {
       ( { match } ) => {
         const CustomerControl = match ? CustomerEdit : CustomerData;
-        return  <CustomerControl { ...this.props.customer } />
+        return  <CustomerControl { ...this.props.customer } onSubmit = { this.handleSubmit } />
       }
     } />
   );
