@@ -15,8 +15,7 @@ body {
 }
 
 .customers-actions {
-  margin: 0;
-  position: absolute;
+  margin: auto;
   bottom: 20px;
   left: 30px;
   background: rgba(0, 0, 0, 0.2);
@@ -160,4 +159,14 @@ img {
 
 .customer-data strong {
   font-size: 20px;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
