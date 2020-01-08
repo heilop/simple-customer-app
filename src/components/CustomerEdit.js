@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field, isSubmitting } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { setPropsAsInitial } from './../helpers/setPropsAsInitial';
 import CustomersActions from './../components/CustomersActions';
 // const isRequired = value => (
@@ -32,7 +32,7 @@ const MyField = ({ input, meta, type, label, name }) => (
     </div>
 );
 
-const CustomerEdit = ({ name, id, age, handleSubmit, submitting }) => {
+const CustomerEdit = ({ name, id, age, handleSubmit, submitting, onBack }) => {
   return (
     <div>
       <h2>Customer Edition</h2>
@@ -58,7 +58,8 @@ const CustomerEdit = ({ name, id, age, handleSubmit, submitting }) => {
           label = "Age"
         ></Field>
         <CustomersActions>
-          <button type="submit" disabled = { submitting }>Save</button>
+          <button type = "submit" disabled = { submitting }>Save</button>
+          <button onClick = { onBack }>Cancel</button>
         </CustomersActions>
       </form>
     </div>
@@ -69,6 +70,7 @@ CustomerEdit.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,
   age: PropTypes.number,
+  onBack: PropTypes.func.isRequired,
 };
 
 const CustomerEditForm = reduxForm({
