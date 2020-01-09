@@ -14,6 +14,31 @@
       "id": "30000000",
       "name": "Aueliano Buendia",
       "age": 30
+    },
+    {
+      "name": "José Vargas",
+      "id": "15500000",
+      "age": 23
+    },
+    {
+      "name": "Angie Mendez",
+      "id": "31000000",
+      "age": 32
+    },
+    {
+      "name": "Vicky Neuman",
+      "id": "2200000000",
+      "age": 24
+    },
+    {
+      "name": "Sonia Rodríguez",
+      "id": "430000000",
+      "age": 32
+    },
+    {
+      "id": "132000000",
+      "name": "Pepe Alva",
+      "age": 23
     }
   ],
   "posts": [
