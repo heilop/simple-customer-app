@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { setPropsAsInitial } from './../helpers/setPropsAsInitial';
 import CustomersActions from './../components/CustomersActions';
-// const isRequired = value => (
-//   !value && "Required field!"
-// );
+import { Prompt } from 'react-router-dom';
 
 const isNumeric = value => (
   isNaN(Number(value)) && "This field should numeric"
@@ -38,7 +36,9 @@ const MyField = ({ input, meta, type, label, name }) => (
     </div>
 );
 
-const CustomerEdit = ({ name, id, age, handleSubmit, submitting, onBack }) => {
+const CustomerEdit = ({
+  name, id, age, handleSubmit, submitting, onBack, pristine, submitSucceeded
+  }) => {
   return (
     <div>
       <h2>Customer Edition</h2>
@@ -66,9 +66,21 @@ const CustomerEdit = ({ name, id, age, handleSubmit, submitting, onBack }) => {
           normalize = { onlyGrow }
         ></Field>
         <CustomersActions>
-          <button type = "submit" disabled = { submitting }>Save</button>
-          <button onClick = { onBack }>Cancel</button>
+          <button type = "submit" disabled = { pristine || submitting }>
+            Save
+          </button>
+          <button
+            type = "button"
+            disabled = { submitting }
+            onClick = { onBack }
+          >Cancel
+          </button>
         </CustomersActions>
+        <Prompt
+          when = { !pristine && !submitSucceeded }
+          message = "Unsaved data will be lost!"
+        >
+        </Prompt>
       </form>
     </div>
   );
