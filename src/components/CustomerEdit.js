@@ -24,7 +24,8 @@ const validate = values => {
 const toNumber = value => value && Number(value);
 
 const onlyGrow = (value, previousValue, values) =>
-  value && previousValue && (value > previousValue ? value : previousValue);
+  value &&
+  (!previousValue ? value : (value > previousValue ? value : previousValue));
 
 const MyField = ({ input, meta, type, label, name }) => (
   <div>
