@@ -1,19 +1,19 @@
 {
   "customers": [
     {
-    "id": "10000000",
-    "name": "Juanito Perez",
-    "age": 21
+      "id": "10000000",
+      "name": "Juan Perez",
+      "age": 21
     },
     {
-    "id": "15000000",
-    "name": "Otro",
-    "age": 25
+      "id": "15000000",
+      "name": "Jess García",
+      "age": 25
     },
     {
-    "id": "30000000",
-    "name": "Aueliano Buendia",
-    "age": 30
+      "id": "30000000",
+      "name": "Aueliano Buendia",
+      "age": 30
     }
   ],
   "posts": [
