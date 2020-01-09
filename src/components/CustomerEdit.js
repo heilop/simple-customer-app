@@ -25,6 +25,9 @@ const validate = values => {
 
 const toNumber = value => value && Number(value);
 
+const onlyGrow = (value, previousValue, values) =>
+  value && previousValue && (value > previousValue ? value : previousValue);
+
 const MyField = ({ input, meta, type, label, name }) => (
   <div>
     <label htmlFor = { name } >{ label }</label>
@@ -60,6 +63,7 @@ const CustomerEdit = ({ name, id, age, handleSubmit, submitting, onBack }) => {
           validate = { isNumeric }
           label = "Age"
           parse = { toNumber }
+          normalize = { onlyGrow }
         ></Field>
         <CustomersActions>
           <button type = "submit" disabled = { submitting }>Save</button>
