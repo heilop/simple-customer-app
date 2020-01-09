@@ -22,6 +22,10 @@ class CustomerContainer extends Component {
     return this.props.updateCustomer(id, values);
   };
 
+  handleSubmitSuccess = () => {
+    this.props.history.goBack();
+  }
+
   handleOnBack = () => {
     this.props.history.goBack();
   }
@@ -33,6 +37,7 @@ class CustomerContainer extends Component {
         return  <CustomerControl
           { ...this.props.customer }
           onSubmit = { this.handleSubmit }
+          onSubmitSuccess = { this.handleSubmitSuccess }
           onBack = { this.handleOnBack }
         />
       }
