@@ -22,6 +22,9 @@ const validate = values => {
   }
   return error;
 }
+
+const toNumber = value => value && Number(value);
+
 const MyField = ({ input, meta, type, label, name }) => (
   <div>
     <label htmlFor = { name } >{ label }</label>
@@ -56,6 +59,7 @@ const CustomerEdit = ({ name, id, age, handleSubmit, submitting, onBack }) => {
           type = "number"
           validate = { isNumeric }
           label = "Age"
+          parse = { toNumber }
         ></Field>
         <CustomersActions>
           <button type = "submit" disabled = { submitting }>Save</button>
