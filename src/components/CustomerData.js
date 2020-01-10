@@ -15,7 +15,7 @@ const CustomerData = ({
       </div>
       <CustomersActions>
         <button onClick = { onBack }>Back</button>
-        { isDeleteAllow && <button onClick = { onDelete }>Delete</button> }
+        { isDeleteAllow && <button onClick = { () => onDelete(id) }>Delete</button> }
       </CustomersActions>
     </div>
   );
