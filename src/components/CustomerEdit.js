@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { setPropsAsInitial } from './../helpers/setPropsAsInitial';
@@ -27,65 +27,79 @@ const onlyGrow = (value, previousValue, values) =>
   value &&
   (!previousValue ? value : (value > previousValue ? value : previousValue));
 
-const MyField = ({ input, meta, type, label, name }) => (
-  <div>
-    <label htmlFor = { name } >{ label }</label>
-    <input { ...input } type = { !type ? "text" : type } />
-      {
-        meta.touched && meta.error && <span>{ meta.error }</span>
-      }
-    </div>
-);
+class CustomerEdit extends Component {
 
-const CustomerEdit = ({
-  name, id, age, handleSubmit, submitting, onBack, pristine, submitSucceeded
-  }) => {
-  return (
+  componentDidMount = () => {
+    if (this.txt) {
+      this.txt.focus();
+    }
+  }
+
+  renderField = ({ input, meta, type, label, name, withFocus }) => (
     <div>
-      <h2>Customer Edition</h2>
-      <form onSubmit = { handleSubmit }>
-        <Field
-          name = "name"
-          component = { MyField }
-          type = "text"
-          label = "Name"
-        ></Field>
-        <Field
-          name="id"
-          component = { MyField }
-          type = "text"
-          validate = { isNumeric }
-          label = "Id"
-        ></Field>
-        <Field
-          name = "age"
-          component = { MyField }
-          type = "number"
-          validate = { isNumeric }
-          label = "Age"
-          parse = { toNumber }
-          normalize = { onlyGrow }
-        ></Field>
-        <CustomersActions>
-          <button type = "submit" disabled = { pristine || submitting }>
-            Save
-          </button>
-          <button
-            type = "button"
-            disabled = { submitting }
-            onClick = { onBack }
-          >Cancel
-          </button>
-        </CustomersActions>
-        <Prompt
-          when = { !pristine && !submitSucceeded }
-          message = "Unsaved data will be lost!"
-        >
-        </Prompt>
-      </form>
-    </div>
+      <label htmlFor = { name } >{ label }</label>
+      <input
+        { ...input }
+        type = { !type ? "text" : type }
+        ref = { withFocus && (txt => this.txt = txt) }
+      />
+        {
+          meta.touched && meta.error && <span>{ meta.error }</span>
+        }
+      </div>
   );
-};
+
+
+  render() {
+    const { handleSubmit, submitting, onBack, pristine, submitSucceeded } = this.props;
+    return (
+      <div>
+        <h2>Customer Edition</h2>
+        <form onSubmit = { handleSubmit }>
+          <Field
+            withFocus
+            name = "name"
+            component = { this.renderField }
+            type = "text"
+            label = "Name"
+          ></Field>
+          <Field
+            name="id"
+            component = { this.renderField }
+            type = "text"
+            validate = { isNumeric }
+            label = "Id"
+          ></Field>
+          <Field
+            name = "age"
+            component = { this.renderField }
+            type = "number"
+            validate = { isNumeric }
+            label = "Age"
+            parse = { toNumber }
+            normalize = { onlyGrow }
+          ></Field>
+          <CustomersActions>
+            <button type = "submit" disabled = { pristine || submitting }>
+              Save
+            </button>
+            <button
+              type = "button"
+              disabled = { submitting }
+              onClick = { onBack }
+            >Cancel
+            </button>
+          </CustomersActions>
+          <Prompt
+            when = { !pristine && !submitSucceeded }
+            message = "Unsaved data will be lost!"
+          >
+          </Prompt>
+        </form>
+      </div>
+    );
+  }
+}
 
 CustomerEdit.propTypes = {
   name: PropTypes.string,
@@ -98,4 +112,5 @@ const CustomerEditForm = reduxForm({
   form: 'CustomerEdit',
   validate
 })(CustomerEdit);
+
 export default setPropsAsInitial(CustomerEditForm);
