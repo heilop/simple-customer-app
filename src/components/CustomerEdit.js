@@ -46,7 +46,7 @@ class CustomerEdit extends Component {
         {
           meta.touched && meta.error && <span>{ meta.error }</span>
         }
-      </div>
+    </div>
   );
 
 
